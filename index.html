@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pasang FairGuard</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 20px 64px; background: #f6f7f9; color: #14171f;
+    font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+  h1 { font-size: 26px; letter-spacing: -.02em; margin: 0 0 6px; }
+  .sub { color: #5c6473; margin: 0 0 28px; }
+  .card { background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; padding: 22px; margin-bottom: 18px; }
+  .unduh {
+    display: inline-block; background: #4F46E5; color: #fff; text-decoration: none;
+    padding: 13px 22px; border-radius: 9px; font-weight: 600; font-size: 15px;
+  }
+  .unduh:hover { background: #4338CA; }
+  ol { margin: 0; padding-left: 22px; }
+  li { margin-bottom: 12px; }
+  li b { font-weight: 600; }
+  code {
+    background: #f0f1f5; padding: 2px 6px; border-radius: 5px;
+    font: 13px ui-monospace, "SF Mono", "Segoe UI Mono", monospace;
+  }
+  .catatan { font-size: 13.5px; color: #5c6473; }
+  h2 { font-size: 15px; margin: 0 0 10px; }
+  details { margin-top: 10px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+  details div { padding-top: 10px; }
+  .pre {
+    background: #14171f; color: #e6e9ef; padding: 12px 14px; border-radius: 8px;
+    font: 12.5px/1.5 ui-monospace, "SF Mono", monospace; overflow-x: auto; white-space: pre;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Pasang FairGuard</h1>
+  <p class="sub">Penunjuk kecepatan chat di WhatsApp Web. Sekali pasang per laptop, setelah itu memperbarui sendiri.</p>
+
+  <div class="card">
+    <a class="unduh" href="pasang-fairguard.reg" download>Unduh berkas pemasang</a>
+    <p class="catatan" style="margin-bottom:0">Untuk Chrome di Windows. Tidak perlu hak admin.</p>
+  </div>
+
+  <div class="card">
+    <h2>Langkahnya</h2>
+    <ol>
+      <li>Klik tombol di atas. Chrome mungkin bilang berkasnya <b>jarang diunduh</b> — pilih <b>Simpan</b> atau <b>Keep</b>.</li>
+      <li>Buka berkas <code>pasang-fairguard.reg</code> yang baru terunduh, klik dua kali.</li>
+      <li>Windows bertanya apakah yakin — pilih <b>Yes</b>, lalu <b>OK</b>.</li>
+      <li><b>Tutup semua jendela Chrome</b>, lalu buka Chrome lagi. Menutup tab saja tidak cukup.</li>
+      <li>Buka WhatsApp Web. Badge muncul di pojok kanan atas.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Kalau badge tidak muncul</h2>
+    <ol>
+      <li>Pastikan Chrome benar-benar tertutup tadi. Cek ikon Chrome di pojok kanan bawah layar (dekat jam) — kalau masih ada, klik kanan lalu <b>Exit</b>, baru buka Chrome lagi.</li>
+      <li>Buka <code>chrome://policy</code>, klik <b>Reload policies</b>, cari baris <code>ExtensionInstallForcelist</code>.</li>
+      <li>Buka <code>chrome://extensions</code> — FairGuard harusnya ada di situ.</li>
+      <li>Masih belum ada? Tunggu beberapa menit, Chrome mengunduhnya di latar belakang.</li>
+    </ol>
+
+    <details>
+      <summary>Kalau berkas .reg diblokir antivirus</summary>
+      <div>
+        <p class="catatan">Buka <b>Command Prompt</b> (tekan tombol Windows, ketik <code>cmd</code>, Enter), tempel baris ini, tekan Enter, lalu jalankan ulang Chrome:</p>
+        <div class="pre">reg add "HKCU\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist" /v 1 /t REG_SZ /d "iojgjfjlnhnbkfnjgklopolplncnhalc;https://mnfaiwork-ops.github.io/fairguard-dist/update.xml" /f</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Yang dibaca FairGuard</h2>
+    <p class="catatan" style="margin:0">Arah pesan (masuk atau keluar), nama lawan chat, dan jam. <b>Isi pesan tidak pernah dibaca.</b> Tidak ada satu byte pun yang dikirim ke luar laptop — tidak ada server, tidak ada laporan ke siapa pun. Nomor HP customer tidak disimpan; yang dicatat hanya hash bersalt, dan saltnya dibuat sendiri di tiap laptop, jadi catatan di satu laptop tidak bisa dicocokkan dengan laptop lain.</p>
+    <p class="catatan" style="margin-bottom:0">Chrome akan menampilkan tulisan <b>"Dikelola oleh organisasi Anda"</b> di menunya. Itu efek dari cara pasang ini, dan satu-satunya aturan yang terdaftar adalah "pasang FairGuard" — tidak ada yang lain.</p>
+  </div>
+
+  <p class="catatan">Mau mencopot? Unduh <a href="copot-fairguard.reg" download>copot-fairguard.reg</a>, klik dua kali, jalankan ulang Chrome.</p>
+
+</div>
+</body>
+</html>
